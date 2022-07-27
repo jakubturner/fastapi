@@ -1,0 +1,11 @@
+#ignore local variables
+.env
+
+#ignore ide settings
+*idea
+
+#ignore pyhache
+__pycache__
+
+#ignore venv
+venv/
