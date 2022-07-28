@@ -25,12 +25,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.get("/")
-async def main():
-    return {"message": "Hello World"}
-
-
 app.include_router(post.router)
 app.include_router(user.router)
 app.include_router(auth.router)
@@ -39,4 +33,4 @@ app.include_router(votes.router)
 
 @app.get("/")
 def root():
-    return {"message": "hello world"}
+    return {"message": "Mas moc pekny prsa :) a promin ze jsem byl vcera osklivej ❤️"}
