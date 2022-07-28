@@ -6,13 +6,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from app.env import DATABASE_HOSTNAME, DATABASE_NAME, DATABASE_USERNAME
-
-SQLALCHEMY_DATABASE_URL = f"postgresql://{DATABASE_USERNAME}@{DATABASE_HOSTNAME}/{DATABASE_NAME}"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL
+from app.env import (
+    DATABASE_HOSTNAME,
+    DATABASE_NAME,
+    DATABASE_PASSWORD,
+    DATABASE_USERNAME,
 )
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_HOSTNAME}/{DATABASE_NAME}"
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
@@ -25,6 +28,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 
 # USING POSTGRE DRIVER DIRECTLY TO CONNECT DB (DONT NEED IT IF USE SQLALCHEMY)
 # while True:
