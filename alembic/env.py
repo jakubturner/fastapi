@@ -9,12 +9,17 @@ from app.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
-from app.env import DATABASE_HOSTNAME, DATABASE_NAME, DATABASE_USERNAME
+from app.env import (
+    DATABASE_HOSTNAME,
+    DATABASE_NAME,
+    DATABASE_PASSWORD,
+    DATABASE_USERNAME,
+)
 
 config = context.config
 config.set_main_option(
     "sqlalchemy.url",
-    f"postgresql://{DATABASE_USERNAME}@{DATABASE_HOSTNAME}/{DATABASE_NAME}",
+    f"postgresql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_HOSTNAME}/{DATABASE_NAME}",
 )
 
 # Interpret the config file for Python logging.
