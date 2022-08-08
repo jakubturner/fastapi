@@ -1,5 +1,5 @@
 #ignore local variables
-.env
+app/.env
 
 #ignore ide settings
 *idea
